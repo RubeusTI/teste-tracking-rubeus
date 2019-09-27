@@ -43,13 +43,15 @@ function setHostClient() {
         }
     };
 }
-
 function setButtonSuccess() {
-    document.getElementById('hostclientButon').className = 'btn btn-success';
+    document.getElementById('hostclientButton').className = 'btn btn-success';
+    const fieldHostClient = document.getElementById("hostclient");
+    fieldHostClient.setAttribute('placeholder', fieldHostClient.value);
+    fieldHostClient.value = null;
 }
 
 function setButtonFail() {
-    document.getElementById('hostclientButon').className = 'btn btn-danger';
+    document.getElementById('hostclientButton').className = 'btn btn-danger';
 }
 
 function unsetScriptTracking() {
