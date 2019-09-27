@@ -17,70 +17,85 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
         integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="stylesheet.css">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+        integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
+        integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+        crossorigin="anonymous"></script>
 </head>
 
 <body>
     <div class="bg-primary h-100 d-flex align-items-center justify-content-center"
         style="background-color: #6257fc !important;">
         <div class="w-100 d-flex justify-content-center">
-            <div class="container w-50 bg-light border border-primary rounded">
-                <br>
-                <div class="container">
-                    <div class="d-flex justify-content-center">
-                        <h1 class="text-black">
-                            Teste Tracking
-                        </h1>
+            <div class="container col-12">
+                <div class="container col-lg-6 col-sm-8 bg-light border border-primary rounded">
+                    <br>
+                    <div class="container">
+                        <div class="d-flex justify-content-center">
+                            <h1 class="text-black">
+                                Teste Tracking
+                            </h1>
+                        </div>
+                        <div class="d-flex justify-content-center">
+                            <p class="text-black">
+                                Informe os dados nos campos a seguir
+                            </p>
+                        </div>
+                    </div>
+                    <div class="container">
+                        <form class="form-inline d-flex justify-content-center">
+                            <div class="form-group mr-3 mb-2">
+                                <input type="text" class="form-control border border-primary" id="hostclient"
+                                    placeholder="Chave de autenticação" data-toggle="tooltip" data-placement="top"
+                                    title='Use o valor depois de "rbclicod=" do link gerado no Rubeus'>
+                            </div>
+                            <div class="form-group mb-2">
+                                <button type="button" class="btn btn-primary" onclick="setHostClient()">Validar</button>
+                            </div>
+                        </form>
+                        <br>
+                        <form>
+                            <div class="form-group">
+                                <label for="input_nome">Nome</label>
+                                <input type="text" class="form-control border border-primary" id="input_nome"
+                                    placeholder="Seu nome">
+                            </div>
+                            <div class="form-group">
+                                <label for="input_email">Endereço de email</label>
+                                <input type="email" class="form-control border border-primary" id="input_email"
+                                    aria-describedby="emailHelp" placeholder="Seu email">
+                            </div>
+                            <div class="form-group">
+                                <label for="input_telefone">Telefone</label>
+                                <input type="tel" class="form-control border border-primary" id="input_telefone"
+                                    placeholder="Seu telefone">
+                            </div>
+                            <div class="d-flex justify-content-end">
+                                <button type="button" class="btn btn-outline-primary"
+                                    onclick="enviarContatoRubeus()">Enviar</button>
+                            </div>
+                        </form>
+                        <br>
+                        <div id="response-span" class="alert alert-success" role="alert" hidden="true">
+                            A simple success alert—check it out!
+                        </div>
                     </div>
                     <div class="d-flex justify-content-center">
                         <p class="text-black">
-                            Informe os dados nos campos a seguir
+                            Modelo de integração com a plataforma Rubeus
                         </p>
+                        <a href="https://google.com" class="logo-rubeus" target="_blank">
+                            <img class="logo-rubeus" alt="Logo Rubeus"
+                                src="https://tracking.apprubeus.com.br/img/faviconrubeus.png">
+                        </a>
                     </div>
-                </div>
-                <div class="container">
-                    <form class="form-inline d-flex justify-content-center">
-                        <div class="form-group mr-sm-3 mb-2">
-                            <input type="text" class="form-control border border-primary" id="hostclient"
-                                placeholder="Chave de autenticação">
-                        </div>
-                        <div class="form-group mb-2">
-                            <button type="button" class="btn btn-primary"
-                                onclick="setHostClient()">Validar</button>
-                        </div>
-                    </form><br>
-                    <form>
-                        <div class="form-group">
-                            <label for="input_nome">Nome</label>
-                            <input type="text" class="form-control border border-primary" id="input_nome"
-                                placeholder="Seu nome">
-                        </div>
-                        <div class="form-group">
-                            <label for="input_email">Endereço de email</label>
-                            <input type="email" class="form-control border border-primary" id="input_email"
-                                aria-describedby="emailHelp" placeholder="Seu email">
-                        </div>
-                        <div class="form-group">
-                            <label for="input_telefone">Telefone</label>
-                            <input type="tel" class="form-control border border-primary" id="input_telefone"
-                                placeholder="Seu telefone">
-                        </div>
-                        <div class="d-flex justify-content-end">
-                            <button type="button" class="btn btn-outline-primary"
-                                onclick="enviarContatoRubeus()">Enviar</button>
-                        </div>
-                    </form>
                     <br>
-                    <div id="response-span" class="alert alert-success" role="alert" hidden="true">
-                        A simple success alert—check it out!
-                    </div>
                 </div>
-                <div class="d-flex justify-content-center">
-                    <p class="text-black">
-                        Modelo de integração com a plataforma Rubeus
-                    </p>
-                    <img class="logo-rubeus" src="https://tracking.apprubeus.com.br/img/faviconrubeus.png">
-                </div>
-                <br>
             </div>
         </div>
     </div>

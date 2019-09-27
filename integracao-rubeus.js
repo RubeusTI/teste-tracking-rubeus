@@ -10,7 +10,7 @@ function enviarContatoRubeus() {
 
 function callbackError() {
     const span = getSpan();
-    span.className = "alert alert-danger";   
+    span.className = "alert alert-danger";
     span.innerText = "Falhou!";
 }
 
@@ -30,5 +30,33 @@ function setHostClient() {
     document.getElementById(
         "rbtracking"
     ).src = "http://trackinglocal.com.br/libs/RBTracking.min.js?rbclicod=" +
-    document.getElementById("hostclient").value;
+        document.getElementById("hostclient").value;
+
+    document.getElementById(
+        "rbtracking"
+    ).onload = function () {
+        if (RBTracking.getHostClient() !== '') {
+            setButtonSuccess();
+        } else {
+            setButtonFail();
+            unsetScriptTracking();
+        }
+    };
+}
+
+function setButtonSuccess() {
+    document.getElementById('hostclientButon').className = 'btn btn-success';
+}
+
+function setButtonFail() {
+    document.getElementById('hostclientButon').className = 'btn btn-danger';
+}
+
+function unsetScriptTracking() {
+    script = document.getElementById(
+        "rbtracking"
+    );
+    script.parentNode.removeChild(script);
+    script.removeAttribute('src');
+    document.head.appendChild(script);
 }
